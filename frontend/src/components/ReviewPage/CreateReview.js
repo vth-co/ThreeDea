@@ -7,7 +7,7 @@ function CreateReview() {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector((state) => state.session.user);
-  const userId = sessionUser.id;
+  const userId = sessionUser?.id;
 
   const { id } = useParams();
 

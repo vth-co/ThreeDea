@@ -30,9 +30,9 @@ function Navigation({ isLoaded }) {
         <NavLink to="/all">
           <button className="nav-btn">Shop</button>
         </NavLink>
-        <button className="nav-btn">About Us</button>
         <button className="nav-btn">Showroom</button>
         <button className="nav-btn">Menu</button>
+        <button className="nav-btn">About</button>
       </div>
       <div></div>
       {/* <li id="test">

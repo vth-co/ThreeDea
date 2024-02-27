@@ -19,7 +19,7 @@ function SingleProductPage() {
   const reviews = Object.values(reviewsObj)
   console.log(reviews)
 
-  const placeholderImageUrl = "https://via.placeholder.com/750"; // Replace this with your placeholder image URL
+  const placeholderImageUrl = "https://3dea.s3.us-west-1.amazonaws.com/logo-fotor-bg-remover-2023111620641.png"; // Replace this with your placeholder image URL
   const getImageUrl = () => {
   //   const image = images.find((img) => img?.productId === productId);
 
