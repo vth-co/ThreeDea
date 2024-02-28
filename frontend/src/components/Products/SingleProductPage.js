@@ -14,24 +14,13 @@ function SingleProductPage() {
   const { id } = useParams();
 
   const product = useSelector((state) => state.product);
-  const image = useSelector((state) => state.productImage);
+  const imageObj = useSelector((state) => state.productImage);
+  const image = Object.values(imageObj)
+
   const reviewsObj = useSelector((state) => state.review);
   const reviews = Object.values(reviewsObj)
-  console.log(reviews)
-
-  const placeholderImageUrl = "https://3dea.s3.us-west-1.amazonaws.com/logo-fotor-bg-remover-2023111620641.png"; // Replace this with your placeholder image URL
-  const getImageUrl = () => {
-  //   const image = images.find((img) => img?.productId === productId);
-
-  // Check if the image is undefined or null
-    if (image) {
-      return image[0].image;
-    } else {
-      // Return placeholder image URL when the image is not loaded
-      return placeholderImageUrl;
-    }
-  };
-
+  const placeholderImageUrl = "https://3dea.s3.us-west-1.amazonaws.com/placeholder-image.webp"; // Replace this with your placeholder image URL
+  
   const addToCart = () => {
     dispatch(cartActions.addProductCartThunk(product.id));
   };
@@ -48,7 +37,7 @@ function SingleProductPage() {
       <div className="product-container">
         <div className="product left">
           <img
-            src={getImageUrl}
+            src={image[0]?.image ? image[0].image : placeholderImageUrl}
             alt={product.productName}
             className="single-product-image"
           />

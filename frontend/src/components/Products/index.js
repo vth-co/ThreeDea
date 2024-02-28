@@ -19,6 +19,7 @@ export default function ProductsPage() {
   const imagesObj = useSelector((state) => state.productImage);
   const images = Object.values(imagesObj);
 
+
   const placeholderImageUrl = "https://via.placeholder.com/450";
 
   const getImageUrl = (productId) => {

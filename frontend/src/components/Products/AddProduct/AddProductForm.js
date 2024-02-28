@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProductImageThunk } from "../../../store/productimage";
 import { addProductThunk, editProductThunk } from "../../../store/product";
+import "./AddProductForm.css"
 
 function AddProductForm({ setShowModal }) {
   const [productName, setProductName] = useState("");
