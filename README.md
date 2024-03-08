@@ -11,7 +11,7 @@
 
 2. Open another terminal cd into frontend in one terminal and cd into backend in the other. Run 'npm start' in both the frontend and backend directories in order to start the application.
 
-* Navigate to localhost:3000 to interact with the frontend. 
+* Navigate to localhost:3000 to interact with the frontend. qweqweqweqweqweqwe
 
 
 # hackathonTeam7
