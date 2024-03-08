@@ -70,10 +70,6 @@
     border-bottom: 1px solid gray;
 }
 
-.user-icon {
-    vertical-align: middle;
-    font-size: 50px;
-}
 
 .info-header {
     display: flex;

@@ -42,7 +42,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu} className="user-icon">
-        <i className="bx bxs-user-circle"></i>
+        <i className="bx bx-user"></i>
       </button>
       {showMenu && (
         <div className={ulClassName} ref={ulRef}>
@@ -57,9 +57,13 @@ function ProfileButton({ user }) {
               <button className="user-btn">Profile</button>
             </NavLink>
             {/* <AddProduct /> */}
-            <NavLink to="/new/product">
-            <button className="user-btn">Add new product</button>
-            </NavLink>
+            {user.id === 1 ? (
+              <NavLink to="/new/product">
+                <button className="user-btn">Add new product</button>
+              </NavLink>
+            ) : (
+              <></>
+            )}
 
             <button onClick={logout} className="user-btn">
               Log Out

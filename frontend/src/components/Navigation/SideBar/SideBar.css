@@ -42,18 +42,18 @@
     border: none;
     color: rgb(77, 77, 77);
     background-color: transparent;
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
     width: 100%;
     padding: 5px 10px;
     background-color: transparent;
-    transition: background-color .3s ease;
     margin: 0 5px;
     border-radius: 10px;
+    font-weight: bold;
 }
 
 .nav-btn:hover {
-    background-color: rgba(208, 208, 208, 0.974);
+  text-decoration: underline;
 }
 
 .nav-btn.active {

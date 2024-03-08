@@ -20,7 +20,7 @@ export default function ProductsPage() {
   const images = Object.values(imagesObj);
 
 
-  const placeholderImageUrl = "https://via.placeholder.com/450";
+  const placeholderImageUrl = "https://via.placeholder.com/400";
 
   const getImageUrl = (productId) => {
     const image = images.find((img) => img?.productId === productId);

@@ -31,7 +31,7 @@ function Navigation({ isLoaded }) {
           <button className="nav-btn">Shop</button>
         </NavLink>
         <button className="nav-btn">Showroom</button>
-        <button className="nav-btn">Menu</button>
+        <button className="nav-btn">Deals</button>
         <button className="nav-btn">About</button>
       </div>
       <div></div>

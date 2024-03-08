@@ -51,9 +51,6 @@ function CartPage2() {
     return image ? image.image : placeholderImageUrl;
   };
 
-  
-
-
   const checkout = async (e) => {
     try {
       // Create a Stripe session
@@ -105,10 +102,10 @@ function CartPage2() {
     const totalPrice = cartItems.reduce((total, cartItem) => {
       return total + cartItem.productQuantity * (cartItem.pricePerUnit / 100);
     }, 0);
-  
+
     // Convert the total price to a string with 2 decimal places
     const formattedTotalPrice = totalPrice.toFixed(2);
-  
+
     // Convert the string back to a number
     return parseFloat(formattedTotalPrice);
   };
@@ -126,70 +123,93 @@ function CartPage2() {
     }
   };
 
-  return isLoaded ? (
-    <>
-      <div className="shopping-cart-container">
-        <div className="shopping-cart left">
-          <h1>Shopping Cart</h1>
-          <div>
-            {cartItems.map((cartItem) => (
-              <div className="cart-card" key={cartItem.id}>
-                <div className="cart-info" id="cart-section">
-                  <section className="table-cell" id="cart-name">
-                    <NavLink to={`/products/${cartItem.productId}`}>
-                      <img src={getImageUrl(cartItem.productId)} className="product-image" />
-                      {getProductNameById(cartItem.productId, allProducts)}
-                    </NavLink>
-                  </section>
-                  <section className="table-cell">
-                    ${cartItem.pricePerUnit / 100}
-                  </section>
-                  <section className="table-cell" id="cart-quantity">
-                    <aside
-                      className="pointer quantity-change"
-                      onClick={() => addQuantity(cartItem)}
-                    >
-                      <i className="bx bx-plus"></i>
-                    </aside>
-                    <input
-                      type="number"
-                      min="1"
-                      value={cartItem.productQuantity}
-                      onChange={(e) => updateQuantity(cartItem, e.target.value)}
-                    />
-                    <aside
-                      className="pointer quantity-change"
-                      onClick={() => subtractQuantity(cartItem)}
-                    >
-                      <i className="bx bx-minus"></i>
-                    </aside>
-                  </section>
-                  <section>
-                    ${(cartItem.productQuantity * cartItem.pricePerUnit) / 100}
-                  </section>
-                  <section className="table-cell">
-                    <i
-                      className="bx bxs-trash pointer"
-                      onClick={() => deleteCartItem(cartItem)}
-                    ></i>
-                  </section>
+  const checkEmptyCart = cartItems.length !== 0;
+
+  switch (isLoaded) {
+    case true:
+      switch (checkEmptyCart) {
+        case true:
+          return (
+            <>
+              <div className="shopping-cart-container">
+                <div className="shopping-cart left">
+                  <h1>Shopping Cart</h1>
+                  <div>
+                    {cartItems.map((cartItem) => (
+                      <div className="cart-card" key={cartItem.id}>
+                        <div className="cart-info" id="cart-section">
+                          <section className="table-cell" id="cart-name">
+                            <NavLink to={`/products/${cartItem.productId}`}>
+                              <img
+                                src={getImageUrl(cartItem.productId)}
+                                className="product-image"
+                              />
+                              {getProductNameById(
+                                cartItem.productId,
+                                allProducts
+                              )}
+                            </NavLink>
+                          </section>
+                          <section className="table-cell">
+                            ${cartItem.pricePerUnit / 100}
+                          </section>
+                          <section className="table-cell" id="cart-quantity">
+                            <aside
+                              className="pointer quantity-change"
+                              onClick={() => addQuantity(cartItem)}
+                            >
+                              <i className="bx bx-plus"></i>
+                            </aside>
+                            <input
+                              type="number"
+                              min="1"
+                              value={cartItem.productQuantity}
+                              onChange={(e) =>
+                                updateQuantity(cartItem, e.target.value)
+                              }
+                            />
+                            <aside
+                              className="pointer quantity-change"
+                              onClick={() => subtractQuantity(cartItem)}
+                            >
+                              <i className="bx bx-minus"></i>
+                            </aside>
+                          </section>
+                          <section>
+                            $
+                            {(cartItem.productQuantity *
+                              cartItem.pricePerUnit) /
+                              100}
+                          </section>
+                          <section className="table-cell">
+                            <i
+                              className="bx bxs-trash pointer"
+                              onClick={() => deleteCartItem(cartItem)}
+                            ></i>
+                          </section>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="shopping-cart right">
+                  <h1>Checkout</h1>
+                  <div id="total-price">
+                    Total Price: ${calculateTotalPrice()}
+                  </div>
+                  <button onClick={checkout} id="checkout-button">
+                    Purchase
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="shopping-cart right">
-          <h1>Checkout</h1>
-          <div id="total-price">Total Price: ${calculateTotalPrice()}</div>
-          <button onClick={checkout} id="checkout-button">
-            Purchase
-          </button>
-        </div>
-      </div>
-    </>
-  ) : (
-    <div>Loading...</div>
-  );
+            </>
+          );
+        default:
+          return <div className="shopping-cart-container">empty cart</div>;
+      }
+    default:
+      return <div>Loading...</div>;
+  }
 }
 
 export default CartPage2;
