@@ -11,7 +11,11 @@ options.tableName = 'Product Images'
 module.exports = {
   async up(queryInterface, Sequelize) {
     // TO DO
-
+    const validProducts = [
+      {
+        image: 'Blank',
+      }
+    ]
 
     await queryInterface.bulkInsert(options, validProducts, {})
 
