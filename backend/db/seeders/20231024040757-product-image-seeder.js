@@ -13,6 +13,7 @@ module.exports = {
     // TO DO
     const validProducts = [
       {
+        productId: 1,
         image: 'Blank',
       }
     ]
